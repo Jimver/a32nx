@@ -14,6 +14,18 @@
     - Holds the start time in seconds that the ADIRS TIMER will count down from
     - Used to have certain things turn on based on a percentage of the total alignment time
     
+- A32NX_ADIRS_1_FAULT
+    - Bool
+    - Whether the "FAULT" indication is shown on the OVHD ADIRS panel for ADIRS 1
+
+- A32NX_ADIRS_2_FAULT
+    - Bool
+    - Whether the "FAULT" indication is shown on the OVHD ADIRS panel for ADIRS 2
+
+- A32NX_ADIRS_3_FAULT
+    - Bool
+    - Whether the "FAULT" indication is shown on the OVHD ADIRS panel for ADIRS 3
+    
 - A32NX_BRAKE_TEMPERATURE_{1,2,3,4}
     - celsius
     - represents the brake temperature of the rear wheels
@@ -217,3 +229,52 @@
 - A32NX_METRIC_ALT_TOGGLE
     - Bool
     - True if PFD metric altitude enabled
+
+- A32NX_OVHD_HYD_BLUEPUMP_OVRD
+    - Bool
+    - True if "BLUE PUMP OVRD" switch is off
+
+- A32NX_OVHD_HYD_LEAK_MEASUREMENT_G
+    - Bool
+    - True if "HYD LEAK MEASUREMENT G" switch is on
+
+- A32NX_OVHD_HYD_LEAK_MEASUREMENT_G_LOCK
+    - Bool
+    - True if "HYD LEAK MEASUREMENT G" switch lock is down
+
+- A32NX_OVHD_HYD_LEAK_MEASUREMENT_B
+    - Bool
+    - True if "HYD LEAK MEASUREMENT B" switch is on
+
+- A32NX_OVHD_HYD_LEAK_MEASUREMENT_B_LOCK
+    - Bool
+    - True if "HYD LEAK MEASUREMENT B" switch lock is down
+
+- A32NX_OVHD_HYD_LEAK_MEASUREMENT_Y
+    - Bool
+    - True if "HYD LEAK MEASUREMENT Y" switch is on
+
+- A32NX_OVHD_HYD_LEAK_MEASUREMENT_Y_LOCK
+    - Bool
+    - True if "HYD LEAK MEASUREMENT Y" switch lock is down
+    
+- A32NX_LANDING_ELEVATION
+    - Number in feet
+    - Minimum -2000, maximum 15000
+    
+- A32NX_MAN_VS_CONTROL
+    - Number, either 0,1 or 2
+    - 0 if switch is in up position, 1 if switch is neutral, 2 if switch is down.
+    
+- A32NX_CAB_PRESS_MODE_MAN
+    - Bool
+    - True if CABIN PRESS MODE SEL is in manual mode
+    
+- A32NX_CAB_PRESS_SYS_FAULT
+    - Bool
+    - Determines if the FAULT light on the CABIN PRESS MODE SEL pushbutton
+      should be on
+    
+- A32NX_DITCHING
+    - Bool
+    - True if DITCHING mode is enabled

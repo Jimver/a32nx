@@ -1,19 +1,20 @@
 class CDUInitPage {
     static ShowPage1(mcdu) {
         mcdu.clearDisplay();
+
         // TODO create local simvars for.. everything
-        let fromTo = "□□□□/□□□□[color]red";
-        let coRoute = "□□□□□□□□□□[color]red";
-        let flightNo = "□□□□□□□□[color]red";
-        let altDest = "----/----------";
+        let fromTo = "____|____[color]red";
+        let coRoute = "__________[color]red";
+        let flightNo = "________[color]red";
+        let altDest = "----|----------";
         let costIndex = "---";
-        let cruiseFlTemp = "----- /---°";
+        let cruiseFlTemp = "-----|---°";
         let alignOption;
 
         if (mcdu.flightPlanManager.getOrigin() && mcdu.flightPlanManager.getOrigin().ident) {
             if (mcdu.flightPlanManager.getDestination() && mcdu.flightPlanManager.getDestination().ident) {
                 fromTo = mcdu.flightPlanManager.getOrigin().ident + "/" + mcdu.flightPlanManager.getDestination().ident + "[color]blue";
-                if (coRoute.includes("□□□□□□□□□□[color]red")) {
+                if (coRoute.includes("__________[color]red")) {
                     coRoute = "";
                 }
 
@@ -22,10 +23,12 @@ class CDUInitPage {
                     flightNo = SimVar.GetSimVarValue("ATC FLIGHT NUMBER", "string", "FMC") + "[color]blue";
                 }
 
-                costIndex = "□□□[color]red";
+                costIndex = "___[color]red";
                 if (mcdu.costIndex) {
                     costIndex = mcdu.costIndex + "[color]blue";
                 }
+
+                // Cost index
                 mcdu.onLeftInput[4] = () => {
                     const value = mcdu.inOut;
                     mcdu.clearUserInput();
@@ -34,7 +37,8 @@ class CDUInitPage {
                     }
                 };
 
-                cruiseFlTemp = "□□□□□ /□□□°[color]red";
+                cruiseFlTemp = "_____|___°[color]red";
+
                 if (mcdu._cruiseEntered) {
                     //This is done so pilot enters a FL first, rather than using the computed one
                     if (mcdu.cruiseFlightLevel) {
@@ -42,9 +46,11 @@ class CDUInitPage {
                         if (isFinite(mcdu.cruiseTemperature)) {
                             temp = mcdu.cruiseTemperature;
                         }
-                        cruiseFlTemp = "FL" + mcdu.cruiseFlightLevel.toFixed(0).padStart(3, "0") + " /" + temp.toFixed(0) + "°[color]blue";
+                        cruiseFlTemp = "FL" + mcdu.cruiseFlightLevel.toFixed(0).padStart(3, "0") + "/" + temp.toFixed(0) + "°[color]blue";
                     }
                 }
+
+                // CRZ FL / FLX TEMP
                 mcdu.onLeftInput[5] = () => {
                     mcdu._cruiseEntered = true;
                     const value = mcdu.inOut;
@@ -141,7 +147,7 @@ class CDUInitPage {
         };
 
         mcdu.setTemplate([
-            ["INIT ↔"], //Need to find the right unicode for left/right arrow
+            ["INIT {}"], //Need to find the right unicode for left/right arrow
             ["CO RTE", "FROM/TO"],
             [coRoute, fromTo],
             ["ALTN/CO RTE"],
@@ -180,15 +186,15 @@ class CDUInitPage {
     static ShowPage2(mcdu) {
         mcdu.clearDisplay();
 
-        let initBTitle = "INIT ↔";
+        let initBTitle = "INIT {}";
 
         let fuelPlanTopTitle = "";
         let fuelPlanBottomTitle = "";
         const fuelPlanColor = "[color]red";
 
         let zfwColor = "[color]red";
-        let zfwCell = "□□□.□";
-        let zfwCgCell = " □□.□";
+        let zfwCell = "___._";
+        let zfwCgCell = "__._";
 
         if (mcdu._zeroFuelWeightZFWCGEntered) {
             if (isFinite(mcdu.zeroFuelWeight)) {
@@ -216,7 +222,7 @@ class CDUInitPage {
             }
         };
 
-        let blockFuel = "□□□.□";
+        let blockFuel = "___._";
         let blockFuelColor = "[color]red";
         if (mcdu._blockFuelEntered) {
             if (isFinite(mcdu.blockFuel)) {
@@ -289,9 +295,9 @@ class CDUInitPage {
         let tripWindCell = mcdu._windDir + "000";
         let tripWindColor = "[color]blue";
 
-        if (mcdu._zeroFuelWeightZFWCGEntered && blockFuel === "□□.□") {
+        if (mcdu._zeroFuelWeightZFWCGEntered && blockFuel === "__._") {
             fuelPlanTopTitle = "FUEL ";
-            fuelPlanBottomTitle = "PLANNING→";
+            fuelPlanBottomTitle = "PLANNING }";
         }
 
         if (
@@ -303,7 +309,7 @@ class CDUInitPage {
             mcdu._zeroFuelWeightZFWCGEntered &&
             mcdu._blockFuelEntered
         ) {
-            initBTitle = "INIT FUEL PREDICTION ↔";
+            initBTitle = "INIT FUEL PREDICTION {}";
 
             if (isFinite(mcdu.blockFuel)) {
                 fuelPlanTopTitle = "";
@@ -379,7 +385,7 @@ class CDUInitPage {
         mcdu.setTemplate([
             [initBTitle],
             ["TAXI", "ZFW/ZFWCG"], // Reference Honeywell FMS
-            [taxiFuelCell + "[color]blue", zfwCell + "/ " + zfwCgCell + zfwColor],
+            [taxiFuelCell + "[color]blue", zfwCell + "|" + zfwCgCell + zfwColor],
             ["TRIP  /TIME", "BLOCK"],
             [tripWeightCell + "/" + tripTimeCell + tripColor, blockFuel + blockFuelColor],
             ["RTE RSV/%", fuelPlanTopTitle + fuelPlanColor],

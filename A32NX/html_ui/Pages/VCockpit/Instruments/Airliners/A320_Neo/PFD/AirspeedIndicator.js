@@ -2,7 +2,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
     constructor() {
         super(...arguments);
         this.cursorOpacity = "1.0";
-        this.fontSize = 25;
+        this.fontSize = 22;
         this.machVisible = false;
         this.machSpeed = 0;
         this.refHeight = 0;
@@ -129,9 +129,9 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             }
             this.blueSpeedText.setAttribute("x", (posX + 72).toString());
             this.blueSpeedText.setAttribute("y", (posY + 20).toString());
-            this.blueSpeedText.setAttribute("fill", "cyan");
+            this.blueSpeedText.setAttribute("fill", "#00BFD9");
             this.blueSpeedText.setAttribute("font-size", (this.fontSize * 1.1).toString());
-            this.blueSpeedText.setAttribute("font-family", "Roboto-Bold");
+            this.blueSpeedText.setAttribute("font-family", "ECAMFontRegular");
             this.blueSpeedText.setAttribute("text-anchor", "start");
             this.blueSpeedText.setAttribute("alignment-baseline", "central");
             if (!this.redSpeedText) {
@@ -142,9 +142,9 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             }
             this.redSpeedText.setAttribute("x", (posX + 75).toString());
             this.redSpeedText.setAttribute("y", (posY - 17).toString());
-            this.redSpeedText.setAttribute("fill", "magenta");
+            this.redSpeedText.setAttribute("fill", "#FF6EFF");
             this.redSpeedText.setAttribute("font-size", (this.fontSize * 1.1).toString());
-            this.redSpeedText.setAttribute("font-family", "Roboto-Bold");
+            this.redSpeedText.setAttribute("font-family", "ECAMFontRegular");
             this.redSpeedText.setAttribute("text-anchor", "end");
             this.redSpeedText.setAttribute("alignment-baseline", "central");
             if (!this.speedNotSetSVG) {
@@ -158,7 +158,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             this.speedNotSetSVG.setAttribute("y", (posY - 15).toString());
             this.speedNotSetSVG.setAttribute("fill", "red");
             this.speedNotSetSVG.setAttribute("font-size", (this.fontSize * 1.0).toString());
-            this.speedNotSetSVG.setAttribute("font-family", "Roboto-Bold");
+            this.speedNotSetSVG.setAttribute("font-family", "ECAMFontRegular");
             this.speedNotSetSVG.setAttribute("text-anchor", "end");
             this.speedNotSetSVG.setAttribute("alignment-baseline", "central");
             this.rootGroup.appendChild(this.blueSpeedText);
@@ -231,7 +231,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
                         line.SVGText1.setAttribute("x", (linePosX - 6).toString());
                         line.SVGText1.setAttribute("fill", "white");
                         line.SVGText1.setAttribute("font-size", (this.fontSize * 1.5).toString());
-                        line.SVGText1.setAttribute("font-family", "Roboto-Bold");
+                        line.SVGText1.setAttribute("font-family", "ECAMFontRegular");
                         line.SVGText1.setAttribute("text-anchor", "end");
                         line.SVGText1.setAttribute("alignment-baseline", "central");
                     }
@@ -343,7 +343,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             {
                 const shape = document.createElementNS(Avionics.SVG.NS, "path");
                 shape.setAttribute("fill", "none");
-                shape.setAttribute("stroke", "cyan");
+                shape.setAttribute("stroke", "#00BFD9");
                 shape.setAttribute("stroke-width", "2");
                 shape.setAttribute("d", "M 0 22 L 25 0 L 25 44 Z");
                 this.blueSpeedSVG.appendChild(shape);
@@ -366,7 +366,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             {
                 const shape = document.createElementNS(Avionics.SVG.NS, "path");
                 shape.setAttribute("fill", "none");
-                shape.setAttribute("stroke", "magenta");
+                shape.setAttribute("stroke", "#FF6EFF");
                 shape.setAttribute("stroke-width", "2");
                 shape.setAttribute("d", "M 0 22 L 25 0 L 25 44 Z");
                 this.redSpeedSVG.appendChild(shape);
@@ -488,7 +488,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             const speedMarkersPosY = 0;
             this.speedMarkersWidth = width;
             this.speedMarkersHeight = 50;
-            this.createSpeedMarker("1", speedMarkersPosX, speedMarkersPosY, this.updateMarkerV1, 1.0, 1.0, "cyan");
+            this.createSpeedMarker("1", speedMarkersPosX, speedMarkersPosY, this.updateMarkerV1, 1.0, 1.0, "#00BFD9");
             this.createSpeedMarker("F", speedMarkersPosX, speedMarkersPosY, this.updateMarkerF);
             this.createSpeedMarker("S", speedMarkersPosX, speedMarkersPosY, this.updateMarkerS);
             this.centerSVG.appendChild(this.stripsSVG);
@@ -508,7 +508,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             this.machPrefixSVG.setAttribute("y", (posY + height + 45).toString());
             this.machPrefixSVG.setAttribute("fill", "rgb(36,255,0)");
             this.machPrefixSVG.setAttribute("font-size", (this.fontSize * 1.4).toString());
-            this.machPrefixSVG.setAttribute("font-family", "Roboto-Bold");
+            this.machPrefixSVG.setAttribute("font-family", "ECAMFontRegular");
             this.machPrefixSVG.setAttribute("text-anchor", "end");
             this.machPrefixSVG.setAttribute("alignment-baseline", "central");
             this.rootGroup.appendChild(this.machPrefixSVG);
@@ -518,7 +518,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             this.machValueSVG.setAttribute("y", (posY + height + 45).toString());
             this.machValueSVG.setAttribute("fill", "rgb(36,255,0)");
             this.machValueSVG.setAttribute("font-size", (this.fontSize * 1.4).toString());
-            this.machValueSVG.setAttribute("font-family", "Roboto-Bold");
+            this.machValueSVG.setAttribute("font-family", "ECAMFontRegular");
             this.machValueSVG.setAttribute("text-anchor", "start");
             this.machValueSVG.setAttribute("alignment-baseline", "central");
             this.rootGroup.appendChild(this.machValueSVG);
@@ -526,7 +526,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
         this.rootSVG.appendChild(this.rootGroup);
         this.appendChild(this.rootSVG);
     }
-    createSpeedMarker(_text, _x, _y, _handler, _scale = 1.0, _textScale = 1.4, _color = "green", _bg = false, _params = []) {
+    createSpeedMarker(_text, _x, _y, _handler, _scale = 1.0, _textScale = 1.4, _color = "#00E64D", _bg = false, _params = []) {
         const svg = document.createElementNS(Avionics.SVG.NS, "svg");
         svg.setAttribute("id", _text + "_Marker");
         svg.setAttribute("x", _x.toString());
@@ -558,7 +558,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
         text.setAttribute("y", (offsetY + this.speedMarkersHeight * 0.5).toString());
         text.setAttribute("fill", _color);
         text.setAttribute("font-size", (this.fontSize * _textScale).toString());
-        text.setAttribute("font-family", "Roboto-Bold");
+        text.setAttribute("font-family", "ECAMFontRegular");
         text.setAttribute("text-anchor", "start");
         text.setAttribute("alignment-baseline", "central");
         svg.appendChild(text);
@@ -568,7 +568,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
         speed.setAttribute("y", (offsetY + this.speedMarkersHeight * 0.8).toString());
         speed.setAttribute("fill", _color);
         speed.setAttribute("font-size", (this.fontSize * _textScale).toString());
-        speed.setAttribute("font-family", "Roboto-Bold");
+        speed.setAttribute("font-family", "ECAMFontRegular");
         speed.setAttribute("text-anchor", "start");
         speed.setAttribute("alignment-baseline", "central");
         svg.appendChild(speed);
@@ -784,7 +784,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
                             }
                         }
                         this.graduations[i].SVGText1.setAttribute("visibility", "visible");
-                        this.graduations[i].SVGText1.setAttribute("transform", "translate(" + posX.toString() + " " + posY.toString() + ")");
+                        this.graduations[i].SVGText1.setAttribute("transform", "translate(" + posX.toString() + " " + (posY + 3).toString() + ")");
                     }
                 }
                 if (this.graduations[i].SVGText1) {
@@ -1004,6 +1004,28 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             }
         }
     }
+    getFlapApproachSpeed() {
+        const dWeight = SimVar.GetSimVarValue("TOTAL WEIGHT", "kilograms") / 1000;
+        switch (true) {
+            case (dWeight <= 50): return 131;
+            case (dWeight <= 55): return Math.ceil(131 + 1.2 * (dWeight - 50));
+            case (dWeight <= 60): return Math.ceil(137 + 1.4 * (dWeight - 55));
+            case (dWeight <= 65): return Math.ceil(144 + dWeight - 60);
+            case (dWeight <= 70): return Math.ceil(149 + 1.2 * (dWeight - 65));
+            case (dWeight <= 75): return Math.ceil(155 + dWeight - 70);
+            default: return Math.ceil(160 + 1.20 * (dWeight - 75));
+        }
+    }
+    getSlatApproachSpeed() {
+        const dWeight = SimVar.GetSimVarValue("TOTAL WEIGHT", "kilograms") / 1000;
+        switch (true) {
+            case (dWeight <= 45): return Math.ceil(152 + 1.8 * (dWeight - 40));
+            case (dWeight <= 50): return Math.ceil(161 + 1.6 * (dWeight - 45));
+            case (dWeight <= 55): return Math.ceil(169 + 1.8 * (dWeight - 50));
+            case (dWeight <= 60): return Math.ceil(178 + 1.6 * (dWeight - 55));
+            default: return Math.ceil(186 + 1.4 * (dWeight - 60));
+        }
+    }
     updateMarkerF(_marker, currentAirspeed) {
         let hideMarker = true;
         const phase = Simplane.getCurrentFlightPhase();
@@ -1013,11 +1035,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             if (phase == FlightPhase.FLIGHT_PHASE_TAKEOFF || phase == FlightPhase.FLIGHT_PHASE_CLIMB || phase == FlightPhase.FLIGHT_PHASE_GOAROUND) {
                 flapSpeed = Simplane.getStallSpeedPredicted(flapsHandleIndex - 1) * 1.26;
             } else if (phase == FlightPhase.FLIGHT_PHASE_DESCENT || phase == FlightPhase.FLIGHT_PHASE_APPROACH) {
-                if (flapsHandleIndex == 2) {
-                    flapSpeed = Simplane.getStallSpeedPredicted(flapsHandleIndex + 1) * 1.47;
-                } else {
-                    flapSpeed = Simplane.getStallSpeedPredicted(flapsHandleIndex + 1) * 1.36;
-                }
+                flapSpeed = this.getFlapApproachSpeed();
             }
             if (flapSpeed >= 60) {
                 const posY = this.valueToSvg(currentAirspeed, flapSpeed);
@@ -1039,7 +1057,7 @@ class Jet_PFD_AirspeedIndicator extends HTMLElement {
             if (phase == FlightPhase.FLIGHT_PHASE_TAKEOFF || phase == FlightPhase.FLIGHT_PHASE_CLIMB || phase == FlightPhase.FLIGHT_PHASE_GOAROUND) {
                 slatSpeed = Simplane.getStallSpeedPredicted(flapsHandleIndex - 1) * 1.25;
             } else if (phase == FlightPhase.FLIGHT_PHASE_DESCENT || phase == FlightPhase.FLIGHT_PHASE_APPROACH) {
-                slatSpeed = Simplane.getStallSpeedPredicted(flapsHandleIndex + 1) * 1.23;
+                slatSpeed = this.getSlatApproachSpeed();
             }
             if (slatSpeed >= 60) {
                 const posY = this.valueToSvg(currentAirspeed, slatSpeed);
